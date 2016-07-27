@@ -341,11 +341,6 @@ def main():
                 module.exit_json(msg="file already exists but file attributes changed", dest=dest, url=url, changed=changed)
             module.exit_json(msg="file already exists", dest=dest, url=url, changed=changed)
 
-        # If the file already exists, prepare the last modified time for the
-        # request.
-        mtime = os.path.getmtime(dest)
-        last_mod_time = datetime.datetime.utcfromtimestamp(mtime)
-
     # download to tmpsrc
     tmpsrc, info = url_get(module, url, dest, use_proxy, last_mod_time, force, timeout, headers, tmp_dest)
 
